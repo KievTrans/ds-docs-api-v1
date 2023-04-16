@@ -116,7 +116,7 @@ When the transaction is paid the website will receive back a `POST` request cont
     "commission": "20.00",
     "payment_date": 1680971073,
     "payment_method": "Credit Card",
-    "merchant_id": ""
+    "merchant_id": "1"
 }
 ```
 
