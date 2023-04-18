@@ -110,10 +110,10 @@ When the transaction is paid the website will receive back a `POST` request cont
     "client_id": "123456789",
     "payment_status": "success",
     "message": null,
-    "amount_available": "40.00",
+    "amount_available": "50.00",
     "amount_paid": "50.00"
     "currency": "USD"
-    "commission": "20.00",
+    "commission": "XX.00",
     "payment_date": 1680971073,
     "payment_method": "Credit Card",
     "merchant_id": "1"
@@ -156,7 +156,7 @@ The response contains a transaction object:
         "status": "success",
         "amount": "100.00",
         "currency": "USD",
-        "commission": "20.00",
+        "commission": "XX.00",
         "message": "",
         "created_at": 1680971073,
         "paid_at": 1680971073,
@@ -200,7 +200,7 @@ The response contains an array of transaction objects, the same as for the previ
             "status": "success",
             "amount": "100.00",
             "currency": "USD",
-            "commission": "20.00",
+            "commission": "XX.00",
             "message": "",
             "created_at": 1680971073,
             "paid_at": 1680971073,
