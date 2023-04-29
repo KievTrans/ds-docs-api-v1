@@ -10,7 +10,7 @@ Each request must include the `api-key` header containing your API key.
 
 ## General Information
 
-Endpoint: `https://api.dshield.co/v1/`
+Endpoint: `https://api.dshield.co/v1.1/`
 
 Response body example for a successful request:
 
@@ -32,22 +32,24 @@ Response body example for a failed request:
 
 ## Create a payment link
 
-`POST https://api.dshield.co/v1/payment`
+`POST https://api.dshield.co/v1.1/payment`
 
 ### Request
 
 The website sends the following data to the DikeShield Processing Gateway for payment processing.
 
-| Element  | Description |
-| ------------- | ------------- |
-| client_id  | A unique number managed by the website to identify the client.  |
-| client_email  | An email identifier of the customer where an OTP message may be sent by the system prior to the payment.  |
-| amount | The amount of money to be processed by DikeShield. |
-| currency  | The currency of the transaction. Only `USD`, `EUR`, and `GBP` are supported.  |
-| description  | A brief description of the transaction or the product/service being purchased.  |
-| success_url  | The URL to which the customer should be redirected after successfully completing the payment.  |
-| failed_url  | The URL to which the customer should be redirected if an error occurs during the payment.  |
-| callback_url  | The URL to which DikeShield should send a notification of the payment status after processing the transaction.  |
+| Element  | Description                                                                                                    |
+| ------------- |----------------------------------------------------------------------------------------------------------------|
+| client_id  | A unique number managed by the website to identify the client.                                                 |
+| client_email  | An email identifier of the customer where an OTP message may be sent by the system prior to the payment.       |
+| client_private_name  | The first name of the customer.                                                                                |
+| client_family_name  | The last name of the customer.                                                                                 |
+| amount | The amount of money to be processed by DikeShield.                                                             |
+| currency  | The currency of the transaction. Only `USD`, `EUR`, and `GBP` are supported.                                   |
+| description  | A brief description of the transaction or the product/service being purchased.                                 |
+| success_url  | The URL to which the customer should be redirected after successfully completing the payment.                  |
+| failed_url  | The URL to which the customer should be redirected if an error occurs during the payment.                      |
+| callback_url  | The URL to which DikeShield should send a notification of the payment status after processing the transaction. |
 
 ### Requst Example
 
@@ -55,6 +57,8 @@ The website sends the following data to the DikeShield Processing Gateway for pa
 {
     "client_id": "123456789",
     "client_email": "john@acrobat.com",
+    "client_private_name": "John",
+    "client_family_name": "Miller",
     "amount": 50.00,
     "currency": "USD"
     "description": "Short description of the transaction",
@@ -126,7 +130,7 @@ The method allows you to get additional information on the transaction and check
 
 ### Request
 
-`GET https://api.dshield.co/v1/transaction?id={transaction_id}`
+`GET https://api.dshield.co/v1.1/transaction?id={transaction_id}`
 
 | Element  | Description |
 | ------------- | ------------- |
@@ -171,7 +175,7 @@ The method allows you to get a list of all recent transactions.
 
 ### Request
 
-`GET httsp://api.dshield.co/v1/transactions`
+`GET httsp://api.dshield.co/v1.1/transactions`
 
 | Element  | Description |
 | ------------- | ------------- |
@@ -182,9 +186,9 @@ The method allows you to get a list of all recent transactions.
 Example: 
 
 ```
-GET httsp://api.dshield.co/v1/transactions?start_date=2022-01-01&end_date=2022-01-30&status=success
-GET httsp://api.dshield.co/v1/transactions?start_date=2022-01-01&end_date=2022-01-30
-GET httsp://api.dshield.co/v1/transactions?status=chargeback
+GET httsp://api.dshield.co/v1.1/transactions?start_date=2022-01-01&end_date=2022-01-30&status=success
+GET httsp://api.dshield.co/v1.1/transactions?start_date=2022-01-01&end_date=2022-01-30
+GET httsp://api.dshield.co/v1.1/transactions?status=chargeback
 ```
 
 ### Response
@@ -216,3 +220,12 @@ The response contains an array of transaction objects, the same as for the previ
 That's it! This documentation should help you get started with using the DikeShield Processing Gateway API. 
 
 If you have any questions or concerns, please contact our support team at admin@dshield.com
+
+---
+
+## Changelog
+
+### 1.1 (2023-04-29)
+
+- Added `client_private_name` and `client_family_name` parameters to the `payment` method.
+- Changed endpoint URL to `https://api.dshield.co/v1.1/`.
