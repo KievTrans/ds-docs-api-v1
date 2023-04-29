@@ -2,12 +2,14 @@
 
 $api_key = 'Your API-key';
 
-$api_url = 'https://api.dshield.co/v1/payment';
+$api_url = 'https://api.dshield.co/v1.1/payment';
 
 // Prepare the data
 $data = array(
     'client_id' => '42',
     'client_email' => 'example@mail.com',
+    'client_private_name' => 'Joe',
+    'client_family_name' => 'Doe',
     'amount' => '100',
     'currency' => 'USD',
     'description' => 'Short description of the transaction',
@@ -16,7 +18,7 @@ $data = array(
     'callback_url' => 'https://example.com/callback'
 );
 
-// CURL setup 
+// CURL setup
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
